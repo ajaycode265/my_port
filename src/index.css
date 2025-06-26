@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 214 32% 91%;
+
+    --card: 217 33% 17%;
+    --card-foreground: 214 32% 91%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 214 32% 91%;
+
+    --primary: 214 32% 91%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 214 32% 91%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    @apply overflow-x-hidden;
+    max-width: 100%;
+  }
+
+  body {
+    @apply bg-navy text-slate-light font-sans antialiased;
+    transition: background-color 0.3s ease;
+  }
+
+  section {
+    @apply py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-24;
+  }
+
+  .section-heading {
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4 md:mb-6 relative inline-block;
+  }
+  
+  .section-heading::after {
+    content: '';
+    @apply absolute -bottom-2 left-0 w-1/2 h-1 bg-tech-blue rounded-full;
+  }
+
+  .highlight {
+    @apply text-tech-blue font-mono;
+  }
+
+  .nav-link {
+    @apply relative inline-block text-slate hover:text-tech-blue transition-colors duration-300 py-2 px-2 md:px-3;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 -bottom-1 h-0.5 bg-tech-blue rounded-full w-0 transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .btn {
+    @apply px-4 sm:px-6 py-2 sm:py-3 rounded-md font-medium transition-all duration-300 inline-flex items-center gap-2 border;
+  }
+
+  .btn-primary {
+    @apply bg-transparent text-tech-blue border-tech-blue hover:bg-tech-blue/10;
+  }
+
+  .btn-outline {
+    @apply bg-transparent border-slate hover:border-tech-blue text-slate hover:text-tech-blue;
+  }
+
+  .card {
+    @apply bg-navy-light rounded-md border border-slate-dark/30 p-4 md:p-6 transition-all duration-300 hover:shadow-lg hover:shadow-tech-blue/5 hover:-translate-y-1;
+  }
+
+  .animate-on-scroll {
+    @apply opacity-0;
+  }
+  
+  .skill-bar {
+    @apply h-2 bg-navy-light rounded-full overflow-hidden relative;
+  }
+  
+  .skill-progress {
+    @apply h-full absolute left-0 top-0 bg-tech-blue rounded-full;
+  }
+
+  /* Social icon styles */
+  .social-icon-wrapper {
+    @apply block relative cursor-pointer transition-all duration-300 z-10;
+    position: relative;
+    z-index: 20;
+  }
+
+  .social-icon-container {
+    @apply relative flex items-center justify-center text-slate hover:text-tech-blue transition-all duration-300 p-4 rounded-full;
+    animation: none;
+  }
+
+  .social-icon-wrapper:hover .social-icon-container {
+    @apply animate-float;
+    transform: scale(1.15);
+  }
+
+  /* Icon background effect */
+  .social-icon-container::before {
+    content: '';
+    @apply absolute inset-0 rounded-full bg-navy-light scale-0 opacity-0 shadow-lg shadow-tech-blue/30 transition-all duration-300;
+  }
+
+  .social-icon-wrapper:hover .social-icon-container::before {
+    @apply scale-100 opacity-100;
+  }
+
+  /* Pulse effect on hover */
+  .social-icon-wrapper:hover .social-icon-container::after {
+    content: '';
+    @apply absolute inset-0 rounded-full animate-pulse bg-tech-blue/5;
+    z-index: -1;
+  }
+
+  /* Active state for better accessibility */
+  .social-icon-wrapper:active .social-icon-container {
+    transform: scale(0.95);
+  }
+
+  @media (max-width: 640px) {
+    .section-heading::after {
+      @apply h-0.5;
+    }
+    
+    .skill-bar {
+      @apply h-1.5;
+    }
+  }
+
+  .responsive-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6;
+  }
+
+  .responsive-container {
+    @apply mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8;
+  }
+}
